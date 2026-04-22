@@ -1,10 +1,18 @@
+// =========================
+// LOAD DATA
+// =========================
 let data = JSON.parse(localStorage.getItem("mood") || "[]");
 
 let chartInstance = null;
 
-// API
-const API_KEY = "geminiapi";
+// =========================
+// API KEY 
+// =========================
+const API_KEY = "YOUR_GEMINI_API_KEY_HERE";
 
+// =========================
+// AI INSIGHT
+// =========================
 async function getInsight() {
 
   let input = `Mood history: ${data.join(", ")}`;
@@ -34,12 +42,15 @@ async function getInsight() {
     document.getElementById("insight").innerText =
       "🤖 AI Insight:\n\n" + result;
 
-  } catch {
+  } catch (err) {
+    console.log(err);
     document.getElementById("insight").innerText = "AI error.";
   }
 }
 
-// SAVE
+// =========================
+// SAVE MOOD
+// =========================
 function save() {
   let moodEl = document.getElementById("mood");
 
@@ -50,9 +61,18 @@ function save() {
   getInsight();
 }
 
-// CHART
+// =========================
+// DRAW CHART (FIXED)
+// =========================
 function draw() {
-  let ctx = document.getElementById("chart");
+  let canvas = document.getElementById("chart");
+
+  if (!canvas) {
+    console.log("Canvas not found");
+    return;
+  }
+
+  let ctx = canvas.getContext("2d"); // ✅ FIX
 
   let counts = { Happy: 0, Sad: 0, Angry: 0 };
 
@@ -64,10 +84,27 @@ function draw() {
     type: "bar",
     data: {
       labels: Object.keys(counts),
-      datasets: [{ data: Object.values(counts) }]
+      datasets: [{
+        label: "Mood Count",
+        data: Object.values(counts),
+        backgroundColor: ["#22c55e", "#ef4444", "#f59e0b"],
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 1 }
+        }
+      }
     }
   });
 }
 
+// =========================
+// INIT
+// =========================
 draw();
 getInsight();
