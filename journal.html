@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MindMirror - Journal</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- AUTH CHECK FIRST -->
+<script src="auth.js"></script>
+<script>
+  if (!localStorage.getItem("login")) {
+    location.href = "login.html";
+  }
+</script>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>MindMirror</h2>
+  <a href="index.html">Home</a>
+  <a href="test.html">Test</a>
+  <a href="mood.html">Mood</a>
+  <a href="journal.html">Journal</a>
+  <a href="analyse.html">Analysis</a>
+  <a href="profile.html">Profile</a>
+  <a href="about.html">About</a>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<!-- CHAT PAGE -->
+<div class="page">
+
+  <div class="glass chat-box">
+
+    <h2 class="title">Mind Chat</h2>
+
+    <div id="chat"></div>
+
+    <div class="chat-input">
+      <input id="msg" placeholder="Type your thoughts..." onkeypress="handleEnter(event)">
+      <button onclick="send()">Send</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="journal.js"></script>
+
+<script>
+function handleEnter(e) {
+  if (e.key === "Enter") {
+    send();
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MindMirror - Profile</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- AUTH CHECK FIRST -->
+<script src="auth.js"></script>
+<script>
+  if (!localStorage.getItem("login")) {
+    location.href = "login.html";
+  }
+</script>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>MindMirror</h2>
+  <a href="index.html">Home</a>
+  <a href="test.html">Test</a>
+  <a href="mood.html">Mood</a>
+  <a href="journal.html">Journal</a>
+  <a href="analyse.html">Analysis</a>
+  <a href="profile.html">Profile</a>
+  <a href="about.html">About</a>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<!-- PROFILE PAGE -->
+<div class="page">
+
+  <div class="glass profile-card">
+
+    <h2 class="title">Your Profile</h2>
+
+    <!-- USER INFO -->
+    <div class="profile-info">
+      <p><b>Username:</b> <span id="uname"></span></p>
+      <p><b>Joined:</b> <span id="date"></span></p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+
+      <div class="stat-box">
+        <h3 id="testCount">0</h3>
+        <p>Tests Taken</p>
+      </div>
+
+      <div class="stat-box">
+        <h3 id="moodCount">0</h3>
+        <p>Mood Entries</p>
+      </div>
+
+      <div class="stat-box">
+        <h3 id="chatCount">0</h3>
+        <p>Messages</p>
+      </div>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="profile-actions">
+      <button onclick="resetData()">Reset Data</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+// USERNAME
+document.getElementById("uname").innerText =
+  localStorage.getItem("login") || "User";
+
+// JOIN DATE (store once)
+if (!localStorage.getItem("joinDate")) {
+  localStorage.setItem("joinDate", new Date().toLocaleDateString());
+}
+document.getElementById("date").innerText =
+  localStorage.getItem("joinDate");
+
+
+// STATS
+
+let ans = JSON.parse(localStorage.getItem("ans") || "[]");
+document.getElementById("testCount").innerText = ans.length ? 1 : 0;
+
+let mood = JSON.parse(localStorage.getItem("mood") || "[]");
+document.getElementById("moodCount").innerText = mood.length;
+
+let chat = JSON.parse(localStorage.getItem("chat") || "[]");
+document.getElementById("chatCount").innerText = chat.length;
+
+
+// RESET DATA
+function resetData() {
+  if (confirm("Delete all your data?")) {
+    localStorage.clear();
+    alert("Data cleared");
+    location.href = "login.html"; // better UX
+  }
+}
+
+</script>
+
+</body>
+</html>

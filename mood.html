@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MindMirror - Mood</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- AUTH CHECK FIRST -->
+<script src="auth.js"></script>
+<script>
+  if (!localStorage.getItem("login")) {
+    location.href = "login.html";
+  }
+</script>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>MindMirror</h2>
+
+  <a href="index.html">Home</a>
+  <a href="test.html">Test</a>
+  <a href="mood.html">Mood</a>
+  <a href="journal.html">Journal</a>
+  <a href="analyse.html">Analysis</a>
+  <a href="profile.html">Profile</a>
+  <a href="about.html">About</a>
+
+  <button onclick="logout()">Logout</button>
+</div>
+
+<!-- MAIN PAGE -->
+<div class="page">
+
+  <div class="glass">
+
+    <h2 class="title">Mood Tracker</h2>
+
+    <p id="insight"></p>
+
+    <!-- INPUT -->
+    <select id="mood">
+      <option>Happy</option>
+      <option>Sad</option>
+      <option>Angry</option>
+    </select>
+
+    <button onclick="save()">Save Mood</button>
+
+    <!-- CHART -->
+    <canvas id="chart" style="margin-top:20px;"></canvas>
+
+  </div>
+
+</div>
+
+<script src="mood.js"></script>
+
+</body>
+</html>

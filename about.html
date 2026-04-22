@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About - MindMirror</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="auth.js"></script>
+<script>
+  if (!localStorage.login) {
+    location.href = "login.html";
+  }
+</script>
+
+</head>
+<body>
+  <div class="sidebar">
+  <h2>MindMirror</h2>
+  <a href="index.html">Home</a>
+  <a href="test.html">Test</a>
+  <a href="mood.html">Mood</a>
+  <a href="journal.html">Journal</a>
+  <a href="analyse.html">Analysis</a>
+  <a href="profile.html">Profile</a>
+  <a href="about.html">About</a>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<div class="page">
+
+  <div class="glass">
+
+    <h2 class="title">About MindMirror</h2>
+
+    <p>
+      MindMirror is a psychological self-discovery platform designed to help users understand their personality, emotions, and thinking patterns.
+    </p>
+
+    <br>
+
+    <p>
+      Through interactive tests, mood tracking, and journaling, users can gain deeper insights into their mental state and behavior.
+    </p>
+
+    <br>
+
+    <p>
+      This project is built using HTML, CSS, JavaScript, LocalStorage, and API integration.
+    </p>
+
+  </div>
+
+</div>
+
+</body>
+</html>

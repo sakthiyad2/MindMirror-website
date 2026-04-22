@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Signup - MindMirror</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- REDIRECT IF ALREADY LOGGED IN -->
+<script>
+  if (localStorage.getItem("login")) {
+    location.href = "index.html";
+  }
+</script>
+
+</head>
+
+<body>
+
+<div class="auth-page">
+
+  <div class="auth-card">
+    <h2>Create Account</h2>
+    <p>Start your self-discovery journey</p>
+
+    <input id="user" placeholder="Username">
+    <input id="pass" type="password" placeholder="Password">
+
+    <button onclick="signup()">Signup</button>
+
+    <p>Already have account? <a href="login.html">Login</a></p>
+  </div>
+
+</div>
+
+<script src="auth.js"></script>
+
+</body>
+</html>

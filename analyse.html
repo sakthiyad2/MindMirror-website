@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mind Analysis</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- AUTH CHECK FIRST -->
+<script src="auth.js"></script>
+<script>
+  if (!localStorage.login) {
+    location.href = "login.html";
+  }
+</script>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>MindMirror</h2>
+
+  <a href="index.html">Home</a>
+  <a href="test.html">Test</a>
+  <a href="mood.html">Mood</a>
+  <a href="journal.html">Journal</a>
+  <a href="analyse.html">Analysis</a>
+  <a href="profile.html">Profile</a>
+  <a href="about.html">About</a>
+
+  <button onclick="logout()">Logout</button>
+</div>
+
+<!-- MAIN PAGE -->
+<div class="page">
+
+  <div class="glass">
+
+    <h2 class="title">Your Mind Analysis</h2>
+
+    <!-- LOADING -->
+    <div id="loading" class="loading">
+      Analyzing your mind...
+    </div>
+
+    <!-- RESULT TEXT -->
+    <p id="out"></p>
+
+    <!-- BARS -->
+    <div class="result-bar">
+
+      <label>Introversion</label>
+      <div class="bar"><div id="introBar"></div></div>
+
+      <label>Extroversion</label>
+      <div class="bar"><div id="extroBar"></div></div>
+
+      <label>Emotional</label>
+      <div class="bar"><div id="emoBar"></div></div>
+
+      <label>Logical</label>
+      <div class="bar"><div id="logBar"></div></div>
+
+    </div>
+
+    <!-- DOWNLOAD BUTTON (SEPARATE) -->
+    <div style="margin-top:20px; text-align:center;">
+      <button onclick="downloadPDF()">Download Report</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="analyse.js"></script>
+
+</body>
+</html>

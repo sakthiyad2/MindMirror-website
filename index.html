@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MindMirror</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- AUTH CHECK FIRST -->
+<script src="auth.js"></script>
+<script>
+  if (!localStorage.getItem("login")) {
+    location.href = "login.html";
+  }
+</script>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>MindMirror</h2>
+
+  <a href="index.html">Home</a>
+  <a href="test.html">Test</a>
+  <a href="mood.html">Mood</a>
+  <a href="journal.html">Journal</a>
+  <a href="analyse.html">Analysis</a>
+  <a href="profile.html">Profile</a>
+  <a href="about.html">About</a>
+
+  <button onclick="logout()">Logout</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-content">
+    <h1>
+      <span class="gradient-text">Understand</span><br>
+      Your Mind
+    </h1>
+
+    <p id="typing"></p>
+
+    <div class="hero-btns">
+      <a href="test.html" class="btn-primary">Start Journey</a>
+      <a href="journal.html" class="btn-secondary">Explore Thoughts</a>
+    </div>
+  </div>
+
+  <!-- FLOATING SHAPES -->
+  <div class="circle c1"></div>
+  <div class="circle c2"></div>
+  <div class="circle c3"></div>
+
+</section>
+
+<!-- SLIDER -->
+<section class="quote-slider">
+  <div class="quote active">"Your thoughts shape your reality"</div>
+  <div class="quote">"Understand emotions, control life"</div>
+  <div class="quote">"You are deeper than you think"</div>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
